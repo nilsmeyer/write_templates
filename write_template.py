@@ -96,6 +96,12 @@ def write_template(filename, template_data, context, jenv):
 
 def cli():
     cloud_facts = get_cloud_facts()
+
+    if 'userdata' not in cloud_facts or cloud_facts['userdata'] == '':
+        print("write_template: no userdata to process")
+        exit(0)
+        return True
+
     userdata = yaml.round_trip_load(cloud_facts['userdata'])
 
     if 'write_template' in userdata:
