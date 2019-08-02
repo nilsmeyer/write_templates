@@ -84,7 +84,7 @@ def write_template(filename, template_data, context, jenv):
             and 'backup' in template_data \
             and template_data['backup']:
 
-        copyfile(dest, '{].bak'.format(dest))
+        copyfile(dest, '{}.bak'.format(dest))
 
     template = jenv.from_string(raw_template)
     rendered = template.render(context)
